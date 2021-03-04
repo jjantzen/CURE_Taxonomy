@@ -1,0 +1,47 @@
+---
+title: "Phylogeny"
+author: "Johanna Jantzen"
+date: "October 22, 2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r getting tree}
+#my_tree <- tol_induced_subtree(ott_ids = resolved_names$ott_id)
+
+#mono_id <- tnrs_match_names("Acer")
+#mono_tree <- tol_subtree(ott_id = ott_id(mono_id))
+#mono_tree
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+#plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+The Open Tree of Life 
+
+```{r get OTT id}
+
+ott_id_birds <- birds_resolved$ott_id
+ott_id_ants <- ants_resolved$ott_id
+ott_id_maples <- maples_resolved$ott_id
+ott_id_conifers <- conifers_resolved$ott_id
+ott_id_frogs <- frogs_resolved$ott_id
+
+```
+
+
