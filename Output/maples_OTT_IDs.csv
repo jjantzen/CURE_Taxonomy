@@ -1,0 +1,12 @@
+"search_string","unique_name","approximate_match","ott_id","is_synonym","flags","number_matches"
+"acer circinatum","Acer circinatum",FALSE,191948,FALSE,"",1
+"acer glabrum","Acer glabrum",FALSE,266101,FALSE,"",1
+"acer macrophyllum","Acer macrophyllum",FALSE,538695,FALSE,"",1
+"acer negundo","Acer negundo",FALSE,948925,FALSE,"",1
+"acer nigrum","Acer saccharum subsp. nigrum",FALSE,1032499,TRUE,"infraspecific",1
+"acer pensylvanicum","Acer pensylvanicum",FALSE,1032032,FALSE,"",2
+"acer rubrum","Acer rubrum",FALSE,1039827,FALSE,"",2
+"acer saccharum","Acer saccharum",FALSE,948916,FALSE,"",1
+"acer saccharinum","Acer saccharinum",FALSE,266103,FALSE,"",2
+"acer spicatum","Acer spicatum",FALSE,403782,FALSE,"",1
+"aesculus glabra","Aesculus glabra",FALSE,199564,FALSE,"",1

@@ -1,0 +1,20 @@
+Sources of species lists and data for Module 1 (What's in a name?)
+
+Acer rubrum example file:
+GBIF.org (30 September 2020) GBIF Occurrence Download https://urldefense.proofpoint.com/v2/url?u=https-3A__doi.org_10.15468_dl.fjphs7&d=DwICAg&c=sJ6xIWYx-zLMB3EPkvcnVg&r=zYKA9Xw4U6lYd0Pw8jLsRA&m=yzr8InMQufdy8oPlm845f9KQDYYy7bzx9aQE7Aphm_s&s=o499rIbJnBqK7LaQbsDmT5owvBrrky6F1VTCsQq_fbY&e=
+
+Ant species list:
+James R.N. Glasier, John H. Acorn, Scott E. Nielsen and Heather Proctor. 2013. Ants (Hymenoptera: Formicidae) of Alberta: A key to species based primarily on the worker caste. Canadian Journal of Arthropod Identification 22, 1-104 (doi:10.3752/cjai.2013.22).
+
+Frog species list:
+https://www.naturewatch.ca/frogwatch/british-columbia/
+Roughskin newt as outgroup https://www2.gov.bc.ca/gov/content/environment/plants-animals-ecosystems/wildlife/wildlife-conservation/amphibians-reptiles/amphibians-in-b-c/salamanders
+
+Canada’s Maple species list:
+https://www.thecanadianencyclopedia.ca/en/article/maple
+
+Bird species list (Sitta):
+Outgroup Troglodytes aedon (wren): https://link.springer.com/article/10.1007/s10336-014-1063-7/figures/1
+
+
+

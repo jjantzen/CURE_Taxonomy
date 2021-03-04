@@ -1,0 +1,14 @@
+"search_string","unique_name","approximate_match","ott_id","is_synonym","flags","number_matches"
+"anaxyrus boreas","Anaxyrus boreas",FALSE,436373,FALSE,"",1
+"spea intermontanus","Spea intermontana",TRUE,809930,FALSE,"",1
+"pseudacris maculata","Pseudacris maculata",FALSE,323013,FALSE,"",1
+"hyla regilla","Pseudacris regilla",FALSE,1038213,TRUE,"",1
+"rana aurora","Rana aurora",FALSE,771201,FALSE,"",1
+"ascaphus truei","Ascaphus truei",FALSE,485827,FALSE,"",1
+"rana luteiventris","Rana luteiventris",FALSE,881566,FALSE,"",1
+"rana pretiosa","Rana pretiosa",FALSE,92820,FALSE,"",1
+"lithobates catesbeiana","Rana catesbeiana",FALSE,14688,TRUE,"",1
+"lithobates clamitans","Rana clamitans",FALSE,515378,TRUE,"",1
+"lithobates pipiens","Rana pipiens",FALSE,14703,TRUE,"",1
+"lithobates sylvaticus","Rana sylvatica",FALSE,4133610,TRUE,"",1
+"taricha granulosa","Taricha granulosa",FALSE,1041788,FALSE,"",1

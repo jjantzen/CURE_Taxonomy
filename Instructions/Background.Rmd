@@ -1,0 +1,53 @@
+---
+title: "Background"
+author: "Johanna Jantzen"
+date: "December 11, 2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Background on Taxonomy and Nomenclature
+
+**Biodiversity**, made up of all living organisms, is organized into a hierarchical naming system known as Linnaean Taxonomy. Under the Linnaean system of Taxonomy, groups at different **ranks** are known as, for example, **family**, **genus** (pl. = genera), and **species** (sing. and pl. = species). Because this is a **hierarchical** system, **families** are composed of **genera**, and **genera** are composed of **species**. There are other taxonomic levels that you can [read about more](https://www.britannica.com/science/taxonomy/Ranks). 
+
+**Scientific binomials** or **Latin binomials** are the names that scientists give to species using the two-part naming system credited to Linnaeus. These bi(“two”)-nomials(“parts”) are composed of the **generic name** and **specific epithet** and accompanied by an **authority** describing the person who published the name. For example, the polar bear is called Ursus maritimus Phipps where Ursus (capitalized and in italics) is the generic name and maritimus (lower case and in italics) is the specific epithet. “Phipps,” here, is the **authority**, or the abbreviation of the name of the person who published the scientific binomial for the polar bear. It is important to recognize that although scientists have been using the Latin binomial system for a few hundred years, there is a much longer history of common, traditional, or Indigenous names for local biodiversity. For an example of an Indigenous naming systems, please see [Turner et al, 2013](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.843.2670&rep=rep1&type=pdf), and see [Casimirri, 2003](http://www.fao.org/3/XII/0887-A3.htm) for a critique of scientific approaches to integrating Traditional Ecological Knowledge, which may extend to Indigenous nomenclature.
+
+Although many rules are consistent across the tree of life, there are some different nomenclatural conventions for different **kingdoms** * of life, including for bacteria, plants and animals, and you will see examples of both plant and animal names in this module. For example, for animal names, the use of the same word for both the generic name and specific epithet is allowed (tautonyms) as in the case of Gorilla gorilla (Savage, 1847) but this is not allowed for plant names. In both naming systems, the specific epithet is expected to agree in case and gender with the generic name (e.g., *Amaranth**us** retroflex**us** * L. or *Patell**a** vulgat**a** * Linnaeus, 1758). 
+
+In both plants and animals, at each taxonomic level, an organism can only belong to one group. That is, an organism can only have one **valid** or **accepted** scientific name assigning it to one species, one genus, and one family. However, because science is an **iterative process**, where current understanding is re-examined in the light of new information, sometimes names for a **taxon** change because, for example, a species is reassigned to a new genus. These name changes result in **synonyms**, or in other words, alternative names that are no longer accepted or valid. Another cause of alternative names can be **orthographic variants** (e.g., *Hieronima* and *Hyeronima*) or **spelling errors**; slight variations in name spelling do not have consequences and are treated as if correctly spelled, but these spelling errors should be corrected when the name is applied in the future. 
+
+*While some taxonomists no longer use the term **kingdom**, we use it here to describe the broad categories of life most commonly recognized.
+
+\newpage
+
+## Terminology
+
+**Taxonomy and Nomenclature Terms**
+
+* Latin binomial: formal scientific name for a species composed of the generic name and specific epithet, usually accompanied by an authority.
+* Specific epithet: second part of a scientific binomial name which identifies the species within the genus.
+* Generic name: first part of a scientific binomial name which identifies the genus to which a species belongs
+* Genus: a taxonomic rank above the level of species and below the level of family; composed of species
+* Species: taxonomic rank that is often considered to be a basic unit of biodiversity; a group of organisms that are related and share some common characteristics
+* Family: taxonomic rank between order and genus
+* Authority: name of the person who first published the name
+* Synonym: a name for a species besides its accepted/valid name; may be due to changes in species concepts or movement of species to a different genus
+* Orthographic error: a spelling error or alternative spelling of the same name
+* Taxonomy: the branch of study concerned with classification of organisms, such as by family, genus, and species
+* Nomenclature: the system of naming taxonomic groups, such as family, genus, and species
+
+**R Terms**
+
+* Script: a file containing lines of code that can be run as a unit or individually
+* Code: statements in a programming language containing functions to manipulate data or conduct analyses; instructions for the computer to do something
+* Function: a command used to perform an action
+* Object: a value having some attributes that is saved in memory; objects can be assigned values and other attributes
+* R Project: directory that contains the files for a specific project with the working directory set to the project directory
+
+
+
+
+
