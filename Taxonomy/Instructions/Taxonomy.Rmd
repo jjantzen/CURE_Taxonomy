@@ -8,11 +8,13 @@ output:
     includes:
       in_header: preamble.tex
 ---
-For instructors: If your students do not have internet access, R objects are available which contain the information retrieved from the online databases. Have your students read the files in (see Guide for Instructors for how to read R objects (.RDS) into R) and use those objects instead of downloading the data from the online database. 
+For instructors: If your students do not have internet access, R objects are available which contain the information retrieved from the online databases. Have your students read the files in (see Guide for Instructors for how to read R objects (.rds) into R) and use those objects instead of downloading the data from the online database. 
 
 ## Start of module
 
-Before doing any work in R, you typically need to load the libraries with the functions that you will need. These libraries have previously been installed for this R project. Let's load them that now by selecting those rows and clicking "Run" or pressing *Ctrl Enter* (Windows) or *Cmd Return* (Mac). The warnings that you see in red are expected.
+The code presented in this document is available in the R script entitled Taxonomy.R which can be edited and run within this R project. 
+
+Before doing any work in R, you typically need to load the libraries with the functions that you will need. These libraries have previously been installed for this R project. Let's load them that now by selecting those rows and clicking "Run" or pressing *Ctrl Enter* (Windows) or *Cmd Return* (Mac). The warnings that you see in red are expected and can be ignored. In this pdf document, you can identify lines of code that were run because they start with the > character, while the resulting output is presented on lines that start with two hash marks *##*. In the pdf, lines of code which contain comments will therefore start with the symbols *>#*. Note that this is true only for the pdf, while in your R script (eg, Taxonomy.R) lines of code do not have any symbols at the start, while comments may start with any number of *#* symbols. 
 
 ```{r load libraries}
 
@@ -30,32 +32,43 @@ Taxonomy is the system used to classify organisms into groups while Nomenclature
 ##Import species lists
 
 First, let's get a list of species to study. You can get species lists from any number of online sources (see Admin/Data_Attribution/Data_citations.txt for the sources of these species lists) or you can generate your own species lists for organisms you are interested in studing. We have selected these groups of organisms to generate five lists of taxa:
+
 1)  Four conifer **genera** (plural of genus) that can be found around the world (Plants)
+
 2)  The maple genus (*Acer*), including only the species found in Canada (Plants)
+
 3)  Ant species occurring in Alberta, Canada (Insects)
+
 4)  The nuthatch genus (*Sitta*) across its entire distribution (Birds)
+
 5)  Frog species occurring in BC, Canada (Amphibians)
 
 For each group of organisms (and therefore species lists), we are also including an **outgroup** species for downstream phylogenetic analysis (see "Module 2: Phylogenetics" for more information on outgroups).
 
 We can generate R objects containing the lists of species names or genus names that we are interested in. For most of the groups, we are just typing the names into lists using the **function** *c()*. For the ant clade, we are reading in a **.txt** file which contains the list of species names. You can also open this "Ant_names.txt" file by clicking on the file name in the "Files" corner of RStudio in the folder "Data".
 
-```{r lists of taxa, prompt = TRUE, tidy = TRUE}
+For birds, we'll look at the genus *Sitta* or nuthatches. We also include one species of wren (*Troglodytes*) as an outgroup for phylogenetic analysis. 
 
-#For birds, we'll look at the genus Sitta or nuthatches. We also include one species of wren (Troglodytes) as an outgroup for phylogenetic analysis. 
+```{r list of birds, prompt = TRUE, tidy = TRUE}
 birds <- c("Sitta", "Troglodytes aedon")
+```
 
-#For insects, we're using a list of ant species from Alberta, Canada. We have an extra step of converting our object into a vector (list) instead of a dataframe.
+For insects, we're using a list of ant species from Alberta, Canada. We have an extra step of converting our object into a **vector** (list) instead of a **dataframe**. Note that this is not a **csv** file and we are using the **read.delim** function rather than the **read.csv** function to import this file
+```{r list of ants, prompt = TRUE, tidy = TRUE}
 ants_df <- read.delim("../Data/Ant_names.txt", header = FALSE, stringsAsFactors = FALSE)
 str(ants_df)
 ants <- as.vector(ants_df$V1)
 str(ants)
+```
 
-#For plants, we have two lists: a list of maple species from Canada with horse chestnut as an outgroup, and a list of conifer genera with Ginkgo as an outgroup.
+For plants, we have two lists: a list of maple species from Canada with horse chestnut as an outgroup, and a list of conifer genera with *Ginkgo* as an outgroup.
+```{r lists of plants, prompt = TRUE, tidy = TRUE}
 maples <- c("Acer circinatum", "Acer glabrum", "Acer macrophyllum", "Acer negundo", "Acer nigrum", "Acer pensylvanicum", "Acer rubrum", "Acer saccharum", "Acer saccharinum", "Acer spicatum", "Aesculus glabra")
 conifers <- c("Abies", "Thuja", "Picea", "Tsuga", "Ginkgo")
+```
 
-#For amphibians, we have a list of frog species from BC, Canada with a salamander as an outgroup.
+For amphibians, we have a list of frog species from BC, Canada with a salamander as an outgroup.
+```{r list of frogs, prompt = TRUE, tidy = TRUE}
 frogs <- c("Anaxyrus boreas", "Spea intermontanus", "Pseudacris maculata", "Hyla regilla", "Rana aurora", "Ascaphus truei", "Rana luteiventris", "Rana pretiosa", "Lithobates catesbeiana", "Lithobates clamitans", "Lithobates pipiens", "Lithobates sylvaticus", "Taricha granulosa")
 
 ```
@@ -72,7 +85,6 @@ We are using the **objects** generated by the code above with the **function** *
 
 
 ``` {r taxonomy resolution, prompt = TRUE, tidy = TRUE}
-
 #Match names using the taxonomic name resolution service
 #These lines of code will not produce any output to the screen
 birds_resolved <- tnrs_match_names(birds)
@@ -87,17 +99,26 @@ frogs_resolved <- tnrs_match_names(frogs)
 
 Now that we have checked our names against the TNRS, we can see if there have been any name changes or errors. Let's look at the dataframes that were output by the *tnrs_match_names* **function**. There are several ways to look at our data. 
 
-We can look at the entire object by just **running** the object. This works best when the objects are small (that is, they do not have too many rows or columns). We can also inspect just the first few rows using the **function** *head()* or we can select specific rows or columns by either subsetting using a number within *[ ]* or the name using *$*.  
+We can look at the entire object by just **running** the object. This works best when the objects are small (that is, they do not have too many rows or columns). We can also inspect just the first few rows using the **function** *head()* or we can select specific rows or columns by either subsetting using a number within square brackets *[ ]* or the column name using *$*.  
 
 Remember that we can use a variety of **functions** to get more information about the dimensions and structure of **objects**:
+
 * *nrow()* - get the number of rows of a dataframe/table
+
 * *ncol()* - get the number of columns of a dataframe/table
+
 * *rownames()* - get the names of the rows of a dataframe/table
+
 * *colnames()* - get the names of the columns of a dataframe/table
+
 * *dim()* - get the dimensions (height and width) of a dataframe/table
+
 * *str()* - get the structure of an object
+
 * *class()* - get the class of an object
+
 * *summary()* - get a summary of an object
+
 * *length()* - get the length of an object (eg a list)
 
 ``` {r inspecting objects,  prompt = TRUE, tidy = TRUE}
@@ -119,10 +140,15 @@ conifers_resolved[1:3, 1:5]
 frogs_resolved$unique_name
 frogs_resolved$is_synonym
 
+#To identify other columns which may contain helpful information, get a list of column names
+colnames(frogs_resolved)
+
 #For those datasets which now include the correct species names, we can make our new species name lists
 frog_species_list <- frogs_resolved$unique_name
 maple_species_list <- maples_resolved$unique_name
 ant_species_list <- ants_resolved$unique_name
+
+
 
 ```
 
@@ -151,11 +177,14 @@ Alternatively, you could get the list of **species** within this family by speci
 *children()* is slightly different in that this **function** only retrieves the names at the taxonomic level immediately below the one queried. So if you input a list of **genera**, you will receive the **species** names, while if you input a list of **families**, you would receive a list of **genera**. 
 
 These **functions** can access several different taxonomic databases. In this module, we will use the Integrated Taxonomic Information System (ITIS) which can also be accessed through <https://www.itis.gov/>. 
-
+The first element in these **functions** can either be a taxonomic name in quotes (eg "Sapindaceae") or an R **object** that contains a list of taxon names which should not be put in quotation marks (eg conifers). You can specify the taxonomic level you are searching using the *downto* field for the *downstream()* function. To specify which database you want to query, use the *db* field (we are using the ITIS database).
 ```{r get lower level taxonomic names,  prompt = TRUE, tidy = TRUE}
 
 #Examples of *downstream()* and *children()* functions
-#The first element in the function can either be a taxonomic name in quotes (eg "Sapindaceae") or an R object that contains a list of taxon names (eg conifers)
+
+#To find more information on specific functions, you can use the following command 
+#(see the help tab on the bottom right of the screen)
+#?downstream
 
 #Here, we have specified to get names down to the species level
 sapindaceae_species <- downstream("Sapindaceae", downto = "species", db = "itis")
@@ -167,27 +196,26 @@ sapindaceae_genera <- children("Sapindaceae", db = "itis")
 
 The next section has some code that is a bit more complicated but uses the functions we tested with Sapindaceae above. As you run these lines, see if you can figure out how each line works. 
 
-```{r Get species names for birds and conifers,  prompt = TRUE, tidy = TRUE}
+Now we will get species names for those datasets without **specific epithets** (ie birds, conifers). Note that for our bird dataset, we don't want to get species name information for the outgroup because it is already a **species binomial** not a **genus** name. 
 
-#Now we will get species names for those datasets without species names (ie birds, conifers)
+```{r print birds,  prompt = TRUE, tidy = TRUE}
 
-#Note that for our bird dataset, we don't want to get species name information for the outgroup because it is already a species binomial not a genus name
 birds
+```
 
-#Although we could just type the name "Sitta" in as our query, we will edit our list by 
-#omitting the last entry (the outgroup) from the list. While it would be easy to do this manually for
-#our very short list of taxa, if we had a longer list it wouldn't be practical
-#We'll break this down into its component steps
-#Note: you do not need to change any of the code for this section
-#Don't worry if you do not understand the code; this may be a first introduction for you
-#This is a demonstration of how to manipulate objects in R so you can see what code can do
+Although we could just type the name *Sitta* in as our query, we will edit our list by omitting the last entry (the **outgroup**) from the list. While it would be easy to do this manually for our very short list of taxa, if we had a longer list it wouldn't be practical. We'll break this down into its component steps.
+Note: you do not need to change any of the code for this section and don't worry if you do not understand the code; this may be a first introduction for you so just follow along with this demonstration of how to manipulate objects in R so you can see what code can do. 
 
+```{r Get species names for birds and conifers,  prompt = TRUE, tidy = TRUE}
 #First, we want to know how long the list is
 length(birds)
 
 #We want to get rid of the last entry (the Nth entry for a list of length N) for this query so we use the '-' symbol to indicate we want to remove this entry, using the [ ] we had used earlier to subset our data.
-#length() is a function to get the length of a list (see above)
+#As seen above, length() is a function to get the length of a list
 birds[-(length(birds))]
+
+#Because length(birds) = 2, the code can also be written as 
+birds[-2]
 
 #We now have the version of the list we want for the query so we can insert it into our function
 species_birds <- downstream(birds[-(length(birds))], downto = "species", db = "itis")
@@ -195,34 +223,48 @@ species_birds <- downstream(birds[-(length(birds))], downto = "species", db = "i
 #We can compare the other function for getting species names for same bird dataset. Are the results the same?
 species_birds2 <- children(birds[-(length(birds))], db = "itis")
 species_birds2$Sitta
-#If we want to create our final list of bird species including our outgroup, we can now add our last entry from the original taxon list back (omitting the "-" now becasue we want to include only that entry instead of exlcuding it)
 
+#If we want to create our final list of bird species including our outgroup, we can now add our last entry from the original taxon list back (omitting the "-" now becasue we want to include only that entry instead of exlcuding it)
 bird_species_list <- c(species_birds$Sitta$taxonname, birds[(length(birds))])
 
 #We can now get species names for conifers - all the names in the list are genus names so we can query the entire list
 species_conifers <- downstream(conifers, downto = "species", db = "itis")
 
-#Now you have a list of dataframes for the conifers with a different dataframe for each genus, but you want the names as a single list
+```
+Notice the difference in the way that the *downstream()* function is written in the first example compared to with the conifer dataset. 
+
+sapindaceae_species <- downstream("Sapindaceae", downto = "species", db = "itis")
+
+species_conifers <- downstream(conifers, downto = "species", db = "itis")
+
+In the first example, the query was put in quotation marks ("Sapindaceae") while in the second, the query was not (conifers). Why do you think this is? 
+
+**Spoiler**: the difference in syntax has to do with whether the query is to be searched verbatim (in quotation marks) or if it represents an object containing the text to be searched. For the example using the family Sapindaceae, the name we wanted to find was the text that we queried in the function: Sapindaceae. The *downstream()* function then searched the ITIS database (specified using the term *db = "itis"*) for the exact phrase *"Sapindaceae"* and returned the resulting list of species (as specified using the  term *downto = "species"*). However, when searching for the genera represented by the object *conifers*, we do not want the *downstream()* function to search the database for the text *"conifers"*, which is what would happen if we included those quotation marks, because *"conifers"* is not an official taxonomic name. Instead, we specify the object *conifers* so that the function will run for all the individual taxa included in the object (that is, the five genera listed in the **conifers** object). So to summarize, if you include quotation marks around text, functions (including *downstream()* and *children()*) will typically treat that text as the query itself, while if you omit quotation marks, the function will recognize the input as an object which stores one or more queries.
+
+Now you have a **list** of **dataframes** for the conifers with a different **dataframe** for each **genus**, but you want the names as a single **list**. We will now do some data manipulation that R makes simpler and more reproducible than cutting and pasting in Excel. We can retrieve the list of species within each genus using the *$* symbol which retrieves a specific column. For example, within the *species_conifers* **list**, we can specify the *Abies* **dataframe** and the *taxonname* **column** which includes the species names. 
+```{r Reformat species names for conifers,  prompt = TRUE, tidy = TRUE}
 species_conifers
 
-#We will now do some data manipulation that R makes simpler and more reproducible than cutting and pasting in Excel
-
-#We can retrieve the list of species within each genus using the $ symbol which retrieves a specific column
-#For example, within the 'species_conifers' list, we can specify the 'Abies' dataframe and the 'taxonname' column which includes the species names
 species_conifers$Abies
+
 species_conifers$Abies$taxonname
 
 #We will take these five lists of names and join them into one list using the c() function
 conifer_species_list <- c(species_conifers$Abies$taxonname, species_conifers$Thuja$taxonname, species_conifers$Picea$taxonname, species_conifers$Tsuga$taxonname, species_conifers$Ginkgo$taxonname)
 
-#We now have five lists of species for our five groups of organisms
-# conifer_species_list
-# bird_species_list
-# frog_species_list
-# maple_species_list 
-# ant_species_list 
 
 ```
+We now have five lists of species for our five groups of organisms:
+
+* conifer_species_list
+
+* bird_species_list
+
+* frog_species_list
+
+* maple_species_list 
+
+* ant_species_list 
 
 Now it's time for you to explore these databases further for your assessment. 
 
@@ -233,7 +275,7 @@ Tip: Retrieving the data for some of the functions can take a little while so wh
 
 9) How many **species** (including **hybrid species** which are indicated by "X") of *Abies* were retrieved? How many of *Picea*?
 10) Pick a **genus** that you're fond of and retrieve the names of **species** within that **genus** using one of the two **functions** illustrated in this module. *Requires internet* - if no internet, write the code you would use to do this
-11) Retrieve the taxonomic level below species for the frog dataset. What do you find? Do the same for the conifer dataset. What about for the conifer dataset? (Hint: start with the **objects** containing the lists of **species** for frogs and for conifers. Copy an example of the code given earlier and edit it in a new line.)
+11) Retrieve the taxonomic level below species for the frog dataset. What do you find? Do the same for the conifer dataset. What about for the conifer dataset? (Hint: start with the **objects** containing the lists of **species** for frogs and for conifers. Copy an example of the code given earlier and edit it in a new line. Remember that correct punctuation is important.)
 12) Now, which of our five datasets has the most species? How did you calculate that?
 
 ## Saving lists of species for future analysis
@@ -242,7 +284,7 @@ Now that we have our lists of species, we may want to save those names, or we ma
 
 The **objects** that are created in R are not saved unless we tell the program to save them. In R Projects, sometimes the **environment** can be saved, so objects that were read into R can be used the next time you open the Project. However, sometimes the results you produce need to be able to be shared with others which requires you to save the **object** to a file. 
 
-Here, we will save our lists of species as **.txt** files and our dataframes containing the OTT IDs as **.csv** files. We need to specify a **path** to where the files will be saved. Because we are working in an R Project, the **path** starts where our script is, so first we move up one level to the "Module_1" folder (*../*), and then specify the **Output** folder (*../Output/*) and the filename of our choice (*../Output/xxxx_species_names.txt*). Each time you enter a new folder or move back a level in the folder structure (*../*) a new section of the path needs to be added (separated by */*). We specify that we want our output files of species names to be **tab delimited** using the **function** *write.table()* and the term *sep = "\t"*. This means that each column would be separated by a tab in the file. We specify that we want our dataframes including the OTT IDs to be saved as **comma delimited files** using the **function** *write.csv()*. The endings of the file names typically indicate what type of file it is (eg **.csv** versus **.txt**). 
+Here, we will save our lists of species as **.txt** files and our dataframes containing the OTT IDs as **.csv** files. We need to specify a **path** to where the files will be saved. Because we are working in an R Project, the **path** starts where our script is, so first we move up one level to the "Module_1" folder (*../*), and then specify the **Output** folder (*../Output/*) and the filename of our choice (*../Output/xxxx_species_names.txt*). Each time you enter a new folder or move back a level in the folder structure (*../*) a new section of the path needs to be added (separated by */*). We specify that we want our output files of species names to be **tab delimited** using the **function** *write.table()* and the term *sep = "\ t"*. This means that each column would be separated by a tab in the file. We specify that we want our dataframes including the OTT IDs to be saved as **comma delimited files** using the **function** *write.csv()*. The endings of the file names typically indicate what type of file it is (eg **.csv** versus **.txt**). 
 
 ``` {R saving objects,  prompt = TRUE, tidy = TRUE}
 

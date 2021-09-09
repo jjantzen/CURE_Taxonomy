@@ -26,7 +26,6 @@ row1 <- readRDS("../Output/Intermediate_output/row1.rds")
 
 To start, open the appropriate instruction file and script, and proceed through the module. For example, for an introduction to some commands and how to run R, open the **Introduction_to_R.pdf** handout in the *Instructions* folder and the **Introduction_to_R.R** script in the *Scripts* folder. Otherwise, if you are ready to get started with the core of the module, open the **Taxonomy.pdf** handout in the *Instructions* folder and the **Taxonomy.R** script in the *Scripts* folder. 
 
-/newpage
 
 ## Common Errors 
 
@@ -71,3 +70,14 @@ Warnings can be ignored in this module
   cannot open the connection
   
   If there is "no such file or directory," make sure that the folder exists and that you have specified the correct path. Typos can cause problems here, as can misspecifying how far back in the directory (../../) you are pointing to. To fix this, check the directory listings in the Files corner of R Studio. 
+  
+* conifer_subspecies
+$conifer_species_list
+[1] parentname parenttsn  rankname   taxonname  tsn       
+<0 rows> (or 0-length row.names)
+attr(,"class")
+[1] "children"
+attr(,"db")
+[1] "itis"
+
+  If a query does not return the expected results (eg, the object is empty), make sure that the query is input correctly. Common mistakes are related to punctuation, such as adding quotation marks around an object name (turning it into a verbatim search) when quotation marks should not be used. Punctuation is very important when coding so ensure that all commas, quotation marks, and parentheses match the examples given. 

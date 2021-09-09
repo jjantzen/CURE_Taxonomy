@@ -7,14 +7,14 @@ Ant species list:
 James R.N. Glasier, John H. Acorn, Scott E. Nielsen and Heather Proctor. 2013. Ants (Hymenoptera: Formicidae) of Alberta: A key to species based primarily on the worker caste. Canadian Journal of Arthropod Identification 22, 1-104 (doi:10.3752/cjai.2013.22).
 
 Frog species list:
-https://www.naturewatch.ca/frogwatch/british-columbia/
-Roughskin newt as outgroup https://www2.gov.bc.ca/gov/content/environment/plants-animals-ecosystems/wildlife/wildlife-conservation/amphibians-reptiles/amphibians-in-b-c/salamanders
+FrogWatch. 2021. Learn about the Frogs of British Columbia. Accessed from: https://www.naturewatch.ca/frogwatch/british-columbia/
+Roughskin newt as outgroup: https://www2.gov.bc.ca/gov/content/environment/plants-animals-ecosystems/wildlife/wildlife-conservation/amphibians-reptiles/amphibians-in-b-c/salamanders
 
 Canada’s Maple species list:
-https://www.thecanadianencyclopedia.ca/en/article/maple
+Turner, J. 2019. Maple Trees in Canada. Accessed from: https://www.thecanadianencyclopedia.ca/en/article/maple
 
-Bird species list (Sitta):
-Outgroup Troglodytes aedon (wren): https://link.springer.com/article/10.1007/s10336-014-1063-7/figures/1
+Bird outgroup: 
+Pasquet, E., Barker, F.K., Martens, J., Tillier, A., Cruaud, C., and A. Cibois. 2014. Evolution within the nuthatches (Sittidae: Aves, Passeriformes): molecular phylogeny, biogeography, and ecological perspectives. Journal of Ornithology 155: 755-765. Accessed from: https://link.springer.com/article/10.1007/s10336-014-1063-7/figures/1
 
 
 
