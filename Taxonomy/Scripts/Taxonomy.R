@@ -19,6 +19,8 @@ birds
 
 #For insects, we're using a list of ant species from Alberta, Canada. We have an extra step of 
 #converting our object into a vector (list) instead of a dataframe.
+#Note that this is not a csv file and we are using the read.delim function rather than the read.csv 
+#function to import this file
 ants_df <- read.delim("./Data/Ant_names.txt", header = FALSE, stringsAsFactors = FALSE)
 str(ants_df)
 ants <- as.vector(ants_df$V1)
@@ -66,14 +68,23 @@ conifers_resolved[1:3, 1:5]
 frogs_resolved$unique_name
 frogs_resolved$is_synonym
 
+#To identify other columns which may contain helpful information, get a list of column names
+colnames(frogs_resolved)
+
 #For those datasets which now include the correct species names, we can make our new species name lists
 frog_species_list <- frogs_resolved$unique_name
 maple_species_list <- maples_resolved$unique_name
 ant_species_list <- ants_resolved$unique_name
 
 #Examples of *downstream()* and *children()* functions
-#The first element in the function can either be a taxonomic name in quotes (eg "Sapindaceae") or 
+
+#The first element in these functions can either be a taxonomic name in quotes (eg "Sapindaceae") or 
 #an R object that contains a list of taxon names (eg 'conifers')
+#You can specify the taxonomic level you are searching using the "downto" field for the "downstream" function
+#To specify which database you want to query, use the "db" field
+#To find more information on specific functions, you can use the following command 
+#(see the help tab on the bottom right of the screen)
+?downstream
 
 #Here, we have specified to get names down to the species level
 sapindaceae_species <- downstream("Sapindaceae", downto = "species", db = "itis")
@@ -104,6 +115,9 @@ length(birds)
 #we use the '-' symbol to indicate we want to remove this entry, using the [ ] we had used earlier to 
 #subset our data.
 birds[-(length(birds))]
+
+#Because length(birds) = 2, the code can also be written as 
+birds[-2]
 
 #We now have the version of the list we want for the query so we can insert it into our function
 species_birds <- downstream(birds[-(length(birds))], downto = "species", db = "itis")
@@ -147,6 +161,7 @@ bird_species_list
 frog_species_list
 maple_species_list 
 ant_species_list 
+
 
 #write the objects to files - saving these files for future reference
 

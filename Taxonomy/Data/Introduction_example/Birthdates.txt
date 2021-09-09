@@ -1,0 +1,9 @@
+Name	Birthdate
+John	2000-04-22
+Maria	1996-11-02
+Sophia	1999-07-14
+Ahmet	2001/08/08
+Fernanda	1998/06/29
+Takumi	1997/02/12
+Devansh	2000/09/19
+Eleni	1999/12/21

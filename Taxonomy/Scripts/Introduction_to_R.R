@@ -28,3 +28,25 @@ head(col1)
 #view structure of the data object
 str(example_file)
 
+#Read in the tab-delimited file using the read.delim function - you need to specify that the character "\t" is used to separate columns (the backslash is used to "excape" the t, which means that you are referring to a tab, not the letter t)
+txt_file_example_1 <- read.delim("./Data/Introduction_example/Birthdates.txt", sep = "\t", stringsAsFactors = FALSE, header = TRUE)
+
+head(txt_file_example_1)
+
+#If you specify that the separator is a space (" "), the file is not imported correctly, because the separator is actually a tab
+txt_file_example_2 <- read.delim("./Data/Introduction_example/Birthdates.txt", sep = " ", stringsAsFactors = FALSE, header = TRUE)
+
+head(txt_file_example_2)
+
+#Alternatively, if the separator is actually a space and not a tab, the separator needs to be specified as sep = " "
+#If you specify that the separator is a space (" "), the file is not imported correctly, because the separator is actually a tab
+txt_file_example_3 <- read.delim("./Data/Introduction_example/Birthdates_space.txt", sep = " ", stringsAsFactors = FALSE, header = TRUE)
+
+head(txt_file_example_3)
+
+
+#To compare, read in the original csv file using the read.delim function, specifying that the separator is a comma
+example_file_delim <- read.delim("./Data/Introduction_example/Acer_rubrum.csv", sep = ",", stringsAsFactors = FALSE, header = TRUE)
+
+head(example_file_delim)
+
