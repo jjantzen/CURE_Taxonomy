@@ -1,7 +1,7 @@
 ---
 title: "Introduction_to_R"
 author: "Johanna Jantzen"
-date: "September 30, 2020"
+date: "September 9, 2021"
 output: 
   pdf_document:
     pandoc_args: --listings

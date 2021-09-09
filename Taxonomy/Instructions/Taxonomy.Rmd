@@ -1,7 +1,7 @@
 ---
 title: "What's in a Name?"
 author: "Johanna Jantzen"
-date: "September 30, 2020"
+date: "September 9, 2021"
 output: 
   pdf_document:
     pandoc_args: --listings
@@ -303,4 +303,4 @@ write.csv(ants_resolved, "../Output/ants_OTT_IDs.csv", row.names = FALSE)
 
 ```
 
-Congratulations! You have resolved taxonomic issues for several groups of organisms, retrieved OTT IDs for these taxa, obtained a list of species names for higher order taxa, and saved your species names and dataframes as files for future analysis. 
+**Congratulations!** You have resolved taxonomic issues for several groups of organisms, retrieved OTT IDs for these taxa, obtained a list of species names for higher order taxa, and saved your species names and dataframes as files for future analysis. 
