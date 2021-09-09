@@ -9,17 +9,17 @@ To run this module, students and the instructor should have downloaded *[RStudio
 
 The module is available for instructors as a RStudio Project (*Instructor_Phylo_Module_1*). For more information on projects, refer to the [RStudio support site](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). All scripts, input, output and instruction files are contained within this project. A separate Project (*Student_Phylo_Module_1*) is available for students (excluding the answer keys and other instructor-specific materials). 
 
-Within the main Project folder, there are four folders that will be used in the module: *Data*, which contains the input data, *Output*, which contains saved output from various stages, and *Scripts*, which contains the files of code for running the module, and *Instructions*, which contains the instruction files for both students and the instructor. The *Admin* file contains files that are used in the background, files documenting references and source material, and the answer keys to assessments. The *packrat* folder can be ignored - it contains the packages used in this module.
+Within the main Project folder, there are four folders that will be used in the module: *Data*, which contains the input data, *Output*, which contains saved output from various stages, *Scripts*, which contains the files of code for running the module, and *Instructions*, which contains the instruction files for both students and the instructor. The *Admin* file contains files that are used in the background, files documenting references and source material, and the answer keys to assessments. The *packrat* folder can be ignored - it contains the packages used in this module.
 
-Instruction files are contained within the *Instructions* folder. Both PDF and .RMD files are available for each section. For those confident in R, feel free to use and edit the .RMD files. For those new to R, the PDF files will be more accessible. In this module, there are two sections: Introduction to R, which provides a brief overview of some of the commands and actions that will be used in the module, and Taxonomy, which contains the core of the lesson. Students have access to both the **Introduction to R** and **Taxonomy** instruction handouts. These handouts walk the student through the exercise. 
+Instruction files are contained within the *Instructions* folder. Both PDF and .RMD files are available for each section. For those confident in R, feel free to use and edit the .RMD files. For those new to R, the PDF files will be more accessible. In this module, there are two sections: Introduction to R, which provides a brief overview of some of the commands and actions that will be used in the module, and Taxonomy, which contains the core of the lesson. Students have access to both the **Introduction to R** and **Taxonomy** instruction handouts. These handouts walk the students through the exercise. 
 
 Within the *Scripts* folder, the script files are labeled by section title. For example, for the Taxonomy section, the script is labeled **Taxonomy.R**. To open scripts, simply click on the title and it will open in the script quadrant of RStudio. Explanations for how to run lines of code are included in the **Introduction to R** handout.
 
-Input and output files are labeled with descriptive titles that should indicate what the files contain. Intermediate output files (for cases where internet is unavailable or in case students run into challenges with an earlier step) are saved in the *Intermediate_output* folder within the *Output* folder in both the Student and the Instructor versions of the module. Students should avoid using those files unless necessary but they are available for students to access so assessment should not be limited to reproducing those files. These objects have been saved as .rds or R objects. To read an intermediate output R object, use the following line of code (edited to the appropriate file name):
+Input and output files are labeled with descriptive titles that should indicate what the files contain. Intermediate output files (for cases where internet is unavailable or in case students run into challenges with an earlier step) are saved in the *Intermediate_output* folder within the *Output* folder in both the Student and the Instructor versions of the module. Students should avoid using those files unless necessary but they are available for students to access so assessments should not be limited to reproducing those files. These objects have been saved as .rds or R objects. To read an intermediate output R object, use the following line of code (edited to the appropriate file name):
 
 ``` {R read RDS objects}
 
-#This is just an example: replace object name and file name with the appropriate names
+#This is just an example: replace object name and file path with the appropriate names
 row1 <- readRDS("../Output/Intermediate_output/row1.rds")
 
 ```
@@ -42,16 +42,16 @@ Warnings can be ignored in this module
   /+ 
   /+ 
 
-  If the line isn't "complete" the console won't be able to finish the line and will wait for more input with the symbol +. Check to make sure the ending of the line wasn't omitted or deleted (here the final ) was deleted). To get rid of the +, enter several ))). You will get an error and can rerun the **complete** line.
+  If the line isn't "complete" the console won't be able to finish the line and will wait for more input with the symbol **+**. Check to make sure the ending of the line wasn't omitted or deleted (here the final **)** was deleted). To get rid of the +, enter several **)))**. You will get an error and can rerun the **complete** line.
   
 * Error in str.default() : argument "object" is missing, with no default
 
-  The function was called without the appropriate arguments within the parentheses (eg *str()* rather than *str(object)*). Make sure that the correct arguments are called for the function.
+  The function was called without the appropriate arguments within the parentheses (eg *str()* rather than *str(object)*). Make sure that the correct arguments (variables that the function will work on) are provided for the function.
   
 * Error: unexpected string constant in "conifers <- c("Abies" "Thuja""
 * Error: unexpected string constant in "conifers <- c("Abies", a "Thuja""
 
-  Unexpected symbols or strings often have to do with missing commas or other puncutation. Here, a comma is missing between two strings. To correct this, insert a comma between "Abies" and "Thuja" to get c("Abies", "Thuja".....). If this happens when running the original script, revert to the original version of the document (there shouldn't be issues with this in the original version). Otherwise, check for missing punctuation, extra letters or symbols accidentally typed into the code.
+  Unexpected symbols or strings often refer to missing commas or other puncutation. In the first example, a comma is missing between two strings. To correct this, insert a comma between "Abies" and "Thuja" to get c("Abies"**,** "Thuja".....). If this happens when running the original script, revert to the original version of the document (there shouldn't be issues with this in the original version). Otherwise, check for missing punctuation, extra letters or symbols accidentally typed into the code (as seen in the second example).
 
 * Error: object 'ant' not found
 
@@ -60,14 +60,14 @@ Warnings can be ignored in this module
 * Error in .tnrs_match_names(names = names, context_name = context_name,  : 
   You must supply a ‘names’ argument
   
-  This is another example of where the correct argument (eg object or word) must be supplied. If supplying arguments in the same order as indicated by the function, the specifier eg tnrs_match_names(names = names_object) can be ommitted tnrs_match_names(names_object).
+  This is another example of where the correct argument (such as an object or word) must be supplied. If supplying arguments in the same order as indicated by the function, the specifier can be omitted; this means that tnrs_match_names(names = names_object) is equivalent to tnrs_match_names(names_object). To ensure that arguments aren't missing, it can be helpful to include the specifier to verify that each field is provided.
   
 * Error in which_rank(downto):NROW(taxize_ds$rank_ref) : 
   argument of length 0
   
-  In this case, the rank in the function was misspelled (sapindaceae_species <- downstream("Sapindaceae", downto = "speices", db = "itis")) so the function was not able to match the rank. In these cases, *Argument of length 0* often indicates that input was either misspelled or misspecified. 
+  In this case, the rank in the function was misspelled as **speices** (sapindaceae_species <- downstream("Sapindaceae", downto = "speices", db = "itis")) so the function was not able to match the rank. In these cases, *Argument of length 0* often indicates that input was either misspelled or misspecified. 
   
 * cannot open file '../Outputs/ant_species_names.txt': No such file or directoryError in file(file, ifelse(append, "a", "w")) : 
   cannot open the connection
   
-  If there is "no such file or directory," make sure that the folder exists and that you have specified the correct path. Typos can cause problems here, as can misspecifying how far back in the directory (../../) you are specifying. To fix this, check the directory listings in the Files corner of R Studio. 
+  If there is "no such file or directory," make sure that the folder exists and that you have specified the correct path. Typos can cause problems here, as can misspecifying how far back in the directory (../../) you are pointing to. To fix this, check the directory listings in the Files corner of R Studio. 
