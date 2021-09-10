@@ -1,7 +1,7 @@
-.Rproj.user/
-Taxonomy/.RData
-Taxonomy/.Rhistory
-Taxonomy/.Rproj.user/
-Taxonomy/packrat/lib/x86_64-w64-mingw32/3.6.1
+
+.Rhistory
+.RData
+.Ruserdata
 Taxonomy/packrat/lib-R/
-.Rproj.user
+Taxonomy/packrat/lib-ext/
+Taxonomy/packrat/lib/x86_64-w64-mingw32/3.6.1/
